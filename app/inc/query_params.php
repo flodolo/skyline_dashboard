@@ -6,7 +6,7 @@ use Json\Json;
 
 // Get the most recent data
 if (! file_exists("{$root_folder}/app/data/statistics.json")) {
-    exit('Folder list.json does not exist.');
+    exit('Folder statistics.json does not exist.');
 }
 $json_file = file_get_contents("{$root_folder}/app/data/statistics.json");
 $stats = json_decode($json_file, true);
