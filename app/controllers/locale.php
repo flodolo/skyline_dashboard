@@ -2,10 +2,14 @@
 
 
 $html_detail_body = '';
-foreach ($latest_stats as $module_name => $data) {
+foreach ($latest_stats as $module_id => $data) {
     if (! isset($data[$requested_locale])) {
         continue;
     }
+
+    $module_name = isset($module_names[$module_id])
+        ? $module_names[$module_id]
+        : $supported_module;
 
     $percentage = $data[$requested_locale]['completion'];
     if ($percentage == 100) {
