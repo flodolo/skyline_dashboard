@@ -25,8 +25,6 @@ $(document).ready(function() {
             null,
             { sType: "percent" },
             null,
-            null,
-            null,
         ]
     });
 
@@ -37,35 +35,9 @@ $(document).ready(function() {
         aoColumns: [
             null,
             null,
-            null,
             { sType: "percent" },
-            null,
-            null,
             null,
         ]
     });
 
-    $('#locale_root_translated').DataTable({
-        info: false,
-        paging: false,
-        searching: false,
-        aoColumns: [
-            null,
-            null,
-            null,
-            { sType: "percent" },
-        ]
-    });
-
-    $('#locale_root_identical').DataTable({
-        info: false,
-        paging: false,
-        searching: false,
-        aoColumns: [
-            null,
-            null,
-            null,
-            { sType: "percent" },
-        ]
-    });
 });

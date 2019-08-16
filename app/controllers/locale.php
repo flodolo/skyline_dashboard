@@ -9,7 +9,7 @@ foreach ($latest_stats as $module_id => $data) {
 
     $module_name = isset($module_names[$module_id])
         ? $module_names[$module_id]
-        : $supported_module;
+        : $module_id;
 
     $percentage = $data[$requested_locale]['completion'];
     if ($percentage == 100) {
@@ -25,8 +25,7 @@ foreach ($latest_stats as $module_id => $data) {
 		<td>{$data[$requested_locale]['total']}</td>
 		<td>{$percentage}&nbsp;%</td>
 		<td>{$data[$requested_locale]['missing']}</td>
-	</tr>
-	";
+	</tr>";
 }
 
 $page_title = 'Locale View';

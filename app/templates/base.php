@@ -3,22 +3,22 @@
 <head>
 	<meta charset=utf-8>
 	<title>L10N Dashboard - <?php echo $page_title; ?></title>
-    <link rel="stylesheet" href="assets/npm/css/bootstrap.min.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="assets/npm/css/bootstrap-theme.min.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="assets/npm/css/dataTables.bootstrap.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="assets/css/main.css" type="text/css" media="all" />
-    <script src="assets/npm/js/jquery.min.js"></script>
-	  <script src="assets/npm/js/bootstrap.min.js"></script>
-    <script src="assets/npm/js/jquery.dataTables.js"></script>
-    <script src="assets/npm/js/dataTables.bootstrap.js"></script>
-    <script src="assets/js/main.js"></script>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="assets/css/datatables.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="assets/css/datatables.bootstrap4.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="assets/css/main.css" type="text/css" media="all" />
+  <script src="assets/js/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/datatables.min.js"></script>
+  <script src="assets/js/datatables.bootstrap4.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </head>
 <body>
   <div class="container">
 	<?php
         if ($selectors_enabled):
     ?>
-	<h1>Generic L10N Dashboard</h1>
+	<h1>Skyline L10N Dashboard</h1>
 	<p>See the <a href="https://github.com/flodolo/skyline_dashboard/">GitHub repository</a> for background information.</p>
     <h2>Locale: <?php echo $requested_locale; ?></h2>
 	<div class="list locale_list">

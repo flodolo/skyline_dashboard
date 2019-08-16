@@ -2,6 +2,10 @@
 
 $html_detail_body = '';
 
+$module_name = isset($module_names[$requested_module])
+    ? $module_names[$requested_module]
+    : $requested_module;
+
 $module_data = $latest_stats[$requested_module];
 foreach ($module_data as $locale => $data) {
     $percentage = $data['completion'];
@@ -18,7 +22,6 @@ foreach ($module_data as $locale => $data) {
 		<td>{$data['total']}</td>
 		<td>{$percentage}&nbsp;%</td>
 		<td>{$data['missing']}</td>
-		<td>
 	</tr>
 	";
 }

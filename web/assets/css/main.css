@@ -14,8 +14,28 @@
     padding-left: 2px;
 }
 
+table {
+    font-size: 14px;
+}
+
+.table td {
+    padding: 0.2rem 0.6rem;
+}
+
 tr th {
     background: #fff;
+}
+
+tr.success {
+    background: #dff0d8;
+}
+
+tr.warning {
+    background: #fcf8e3;
+}
+
+tr.warning {
+    background: #f2dede;
 }
 
 .number {
