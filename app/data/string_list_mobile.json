@@ -1,0 +1,15 @@
+{
+    "mobile/android/base/android_strings.dtd": [
+        "updatednewfirstrun_sync_title",
+        "updatednewfirstrun_sync_subtext",
+        "updatednewfirstrun_signin_button",
+        "crash_notification_title",
+        "crash_notification_message",
+        "crash_notification_negative_button_text",
+        "bookmark_default_folder_title",
+        "pref_cookies_not_accept_trackers",
+        "bookmark_edit_undo",
+        "filepicker_permission_denied",
+        "crash_handler_notifications_channel"
+    ]
+}

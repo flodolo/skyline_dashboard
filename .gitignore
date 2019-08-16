@@ -1,0 +1,9 @@
+.php_cs.cache
+app/config/settings.inc.php
+app/data/statistics.json
+cache/*.cache
+composer.lock
+node_modules
+vendor
+web/assets/npm
+web/cache
