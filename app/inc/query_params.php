@@ -1,9 +1,6 @@
 <?php
 namespace Dashboard;
 
-use Cache\Cache;
-use Json\Json;
-
 // Get the most recent data
 if (! file_exists("{$root_folder}/app/data/statistics.json")) {
     exit('Folder statistics.json does not exist.');
