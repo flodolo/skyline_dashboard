@@ -30,14 +30,17 @@ tr th {
     background: #fff;
 }
 
+td.success,
 tr.success {
     background: #dff0d8;
 }
 
+td.warning,
 tr.warning {
     background: #fcf8e3;
 }
 
+td.danger,
 tr.danger {
     background: #f2dede;
 }

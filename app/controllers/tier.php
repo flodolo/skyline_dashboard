@@ -41,13 +41,20 @@ foreach ($latest_stats as $module_id => $data) {
         $class = 'danger';
     }
     $html_detail_body .= "
-	<tr class=\"{$class}\">
-        <td>{$module_name}</td>";
+	<tr>
+        <th>{$module_name}</th>";
     foreach ($row_data as $locale_data) {
         if ($locale_data == '') {
             $html_detail_body .= "\t\t<td>&nbsp;</td>\n";
         } else {
-            $html_detail_body .= "\t\t<td>{$locale_data}&nbsp;%</td>\n";
+            if ($locale_data == 100) {
+                $class = 'success';
+            } elseif ($locale_data > 50) {
+                $class = 'warning';
+            } else {
+                $class = 'danger';
+            }
+            $html_detail_body .= "\t\t<td class=\"{$class}\">{$locale_data}&nbsp;%</td>\n";
         }
     }
     $html_detail_body .= "\t</tr>";
