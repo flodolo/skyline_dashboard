@@ -48,7 +48,7 @@
 
 	<?php include "{$root_folder}/app/templates/{$sub_template}"; ?>
 
-  <p class="text-right"><small>Last update: <?php echo $last_day; ?></small></p>
+  <p class="text-right"><small>Last update: <?php echo $last_day; ?> UTC</small></p>
 
   </div>
 </body>

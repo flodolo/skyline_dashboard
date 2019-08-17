@@ -1,12 +1,10 @@
 #! /usr/bin/env python3
 
-from glob import glob
 from urllib.parse import quote as urlquote
 from urllib.request import urlopen
 import datetime
 import json
 import os
-import sys
 
 tmx_folder = '/srv/transvision/data/TMX/'
 
@@ -32,7 +30,7 @@ def extract_data(list_file, locales, data):
 
         missing_strings = 0
         for id in string_ids:
-            if not id in locale_data:
+            if id not in locale_data:
                 missing_strings += 1
 
         completion = round(
@@ -43,9 +41,10 @@ def extract_data(list_file, locales, data):
           'completion': completion,
         }
 
+
 def main():
 
-    date_key = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
+    date_key = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M')
     stats_filename = os.path.join(
         os.path.dirname(__file__), os.pardir, 'data', 'statistics.json')
     if os.path.exists(stats_filename):
