@@ -40,4 +40,10 @@ $(document).ready(function() {
         ]
     });
 
+    $('#tier_details').DataTable({
+        info: false,
+        paging: false,
+        searching: false
+    });
+
 });

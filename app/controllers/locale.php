@@ -1,6 +1,5 @@
 <?php
 
-
 $html_detail_body = '';
 foreach ($latest_stats as $module_id => $data) {
     if (! isset($data[$requested_locale])) {
@@ -27,6 +26,12 @@ foreach ($latest_stats as $module_id => $data) {
 		<td>{$data[$requested_locale]['missing']}</td>
 	</tr>";
 }
+
+$module_name = isset($module_names[$requested_module])
+    ? $module_names[$requested_module]
+    : 'All';
+$locale_name = $requested_locale;
+$tier_name = 'All';
 
 $page_title = 'Locale View';
 $selectors_enabled = true;

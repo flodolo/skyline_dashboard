@@ -5,6 +5,8 @@ $html_detail_body = '';
 $module_name = isset($module_names[$requested_module])
     ? $module_names[$requested_module]
     : $requested_module;
+$locale_name = 'All';
+$tier_name = 'All';
 
 $module_data = $latest_stats[$requested_module];
 foreach ($module_data as $locale => $data) {

@@ -19,6 +19,9 @@ foreach ($latest_stats as $product_id => $product_data) {
 $supported_locales = array_unique($supported_locales);
 sort($supported_locales);
 
+// Store if we're using the default view
+$default_view = ! isset($_REQUEST['locale']) && ! isset($_REQUEST['module']);
+
 $requested_locale = isset($_REQUEST['locale'])
     ? htmlspecialchars($_REQUEST['locale'])
     : Utils::detectLocale($supported_locales, 'it');
@@ -37,7 +40,7 @@ $requested_module = isset($_REQUEST['module'])
     : 'all';
 $supported_modules = array_keys($latest_stats);
 if ($requested_module != 'all' && ! in_array($requested_module, $supported_modules)) {
-    exit("Unknown module {$requested_module}");
+    exit("Unknown product {$requested_module}");
 }
 $html_supported_modules = '';
 
@@ -58,4 +61,32 @@ foreach ($supported_modules as $supported_module) {
         ? $module_names[$supported_module]
         : $supported_module;
     $html_supported_modules .= "<a href=\"?module={$supported_module}&amp;locale=all\">{$module_name}</a> ";
+}
+
+$tiers = [
+    'tier1' => ['de', 'en-CA', 'en-GB', 'fr'],
+    'top15' => [
+        'cs', 'de', 'es-AR', 'es-ES', 'es-MX', 'fr', 'hu', 'id', 'it', 'ja',
+        'nl', 'pl', 'pt-BR', 'ru', 'zh-CN',
+    ],
+];
+
+$tier_names = [
+    'tier1' => 'Tier 1',
+    'top15' => 'Top 15',
+];
+
+$requested_tier = isset($_REQUEST['tier'])
+    ? htmlspecialchars($_REQUEST['tier'])
+    : 'all';
+$supported_tiers = array_keys($tiers);
+if ($requested_tier != 'all' && ! in_array($requested_tier, $supported_tiers)) {
+    exit("Unknown tiers {$requested_tier}");
+}
+
+// If default view, use 'tier1' and reset others
+if ($default_view && $requested_tier == 'all') {
+    $requested_tier = 'tier1';
+    $requested_locale = 'all';
+    $requested_module = 'all';
 }
