@@ -13,3 +13,5 @@
 
   </tbody>
 </table>
+
+<canvas id="localeChart" width="800" height="400"></canvas>

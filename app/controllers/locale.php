@@ -1,5 +1,7 @@
 <?php
 
+// Create the table's body
+
 $html_detail_body = '';
 foreach ($latest_stats as $module_id => $data) {
     if (! isset($data[$requested_locale])) {
@@ -22,10 +24,84 @@ foreach ($latest_stats as $module_id => $data) {
 	<tr class=\"{$class}\">
 		<td>{$module_name}</td>
 		<td>{$data[$requested_locale]['total']}</td>
-		<td>{$percentage}&nbsp;%</td>
+		<td>{$percentage} %</td>
 		<td>{$data[$requested_locale]['missing']}</td>
 	</tr>";
 }
+
+// Prepare data for the chart.js graph
+$locale_stats = [];
+$modules = array_keys($module_names);
+$colors = [
+    'androidl10n' => '#8dd3c7',
+    'fennec'      => '#ffffb3',
+    'firefox'     => '#bebada',
+    'fxa'         => '#fb8072',
+    'fxios'       => '#80b1d3',
+    'lockwiseios' => '#fdb462',
+    'monitor'     => '#b3de69',
+    'mozillaorg'  => '#fccde5',
+];
+foreach ($modules as $module) {
+    $locale_stats[$module] = [];
+}
+$dates = array_keys($full_stats);
+foreach ($full_stats as $date => $date_data) {
+    foreach ($date_data as $module_id => $data) {
+        if (isset($data[$requested_locale])) {
+            $locale_stats[$module_id][] = $data[$requested_locale]['completion'];
+        }
+    }
+}
+
+$graph_data = "<script type=\"text/javascript\">\n";
+
+$labels = '    let dates = [';
+foreach ($dates as $date) {
+    $labels .= '"' . $date . '",';
+}
+$labels .= "]\n";
+$graph_data .= $labels;
+
+foreach ($modules as $module) {
+    $graph_data .= "    let {$module} = [" . implode(',', $locale_stats[$module]) ."]\n";
+}
+$graph_data .= "
+    let ctx = document.getElementById(\"localeChart\");
+    var myChart = new Chart(ctx, {
+    type: 'line',
+    options: {
+        legend: {
+            position: \"right\"
+        },
+        scales: {
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: '% completion'
+                }
+            }]
+        }
+    },
+    data: {
+        labels: dates,
+        datasets: [";
+foreach ($modules as $module) {
+    $graph_data .= "
+        {
+            data: {$module},
+            label: \"" . $module_names[$module] . "\",
+            fill: false,
+            backgroundColor: \"" . $colors[$module] . "\",
+            borderColor: \"" . $colors[$module] . "\"
+        },
+    ";
+}
+
+$graph_data .= "]
+    }});
+</script>
+";
 
 $module_name = isset($module_names[$requested_module])
     ? $module_names[$requested_module]

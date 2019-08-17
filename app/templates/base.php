@@ -12,6 +12,7 @@
   <script src="assets/js/datatables.min.js"></script>
   <script src="assets/js/datatables.bootstrap4.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/chart.bundle.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -51,4 +52,10 @@
   <p class="text-right"><small>Last update: <?php echo $last_day; ?> UTC</small></p>
 
   </div>
+
+  <?php
+    if ($controller == 'locale') {
+        echo $graph_data;
+    }
+  ?>
 </body>

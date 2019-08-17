@@ -22,7 +22,7 @@ foreach ($module_data as $locale => $data) {
 	<tr class=\"{$class}\">
 		<td><a href=\"?locale={$locale}\">{$locale}</a></td>
 		<td>{$data['total']}</td>
-		<td>{$percentage}&nbsp;%</td>
+		<td>{$percentage} %</td>
 		<td>{$data['missing']}</td>
 	</tr>
 	";

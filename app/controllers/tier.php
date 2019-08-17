@@ -45,7 +45,7 @@ foreach ($latest_stats as $module_id => $data) {
         <th>{$module_name}</th>";
     foreach ($row_data as $locale_data) {
         if ($locale_data == '') {
-            $html_detail_body .= "\t\t<td>&nbsp;</td>\n";
+            $html_detail_body .= "\t\t<td> </td>\n";
         } else {
             if ($locale_data == 100) {
                 $class = 'success';
@@ -54,7 +54,7 @@ foreach ($latest_stats as $module_id => $data) {
             } else {
                 $class = 'danger';
             }
-            $html_detail_body .= "\t\t<td class=\"{$class}\">{$locale_data}&nbsp;%</td>\n";
+            $html_detail_body .= "\t\t<td class=\"{$class}\">{$locale_data} %</td>\n";
         }
     }
     $html_detail_body .= "\t</tr>";
