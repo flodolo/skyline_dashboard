@@ -7,7 +7,8 @@ if (! file_exists("{$root_folder}/app/data/statistics.json")) {
 }
 $json_file = file_get_contents("{$root_folder}/app/data/statistics.json");
 $stats = json_decode($json_file, true);
-$latest_stats = $stats[end(array_keys($stats))];
+$last_day = end(array_keys($stats));
+$latest_stats = $stats[$last_day];
 
 $supported_locales = [];
 foreach ($latest_stats as $product_id => $product_data) {
