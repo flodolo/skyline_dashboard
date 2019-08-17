@@ -11,7 +11,7 @@ $locales_number = count($requested_locales);
 
 $table_header = '<th>Product</th>';
 foreach ($requested_locales as $locale) {
-    $table_header .= "<th>{$locale}</th>\n";
+    $table_header .= "<th class=\"locale\">{$locale}</th>\n";
 }
 
 foreach ($latest_stats as $module_id => $data) {

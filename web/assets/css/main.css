@@ -19,15 +19,20 @@
 }
 
 table {
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .table td {
     padding: 0.2rem 0.6rem;
 }
 
-tr th {
-    background: #fff;
+.table tr th {
+    background: #eee;
+    padding: 0.2rem 0.6rem;
+}
+
+th.locale {
+    white-space: nowrap;
 }
 
 td.success,
