@@ -33,23 +33,33 @@ foreach ($latest_stats as $module_id => $data) {
 $locale_stats = [];
 $modules = array_keys($module_names);
 $colors = [
-    'androidl10n' => '#8dd3c7',
-    'fennec'      => '#ffffb3',
-    'firefox'     => '#bebada',
-    'fxa'         => '#fb8072',
-    'fxios'       => '#80b1d3',
-    'lockwiseios' => '#fdb462',
-    'monitor'     => '#b3de69',
-    'mozillaorg'  => '#fccde5',
+    'fenix'           => '#8dd3c7',
+    'fennec'          => '#ffffb3',
+    'firefox'         => '#bebada',
+    'fxa'             => '#fb8072',
+    'fxios'           => '#80b1d3',
+    'lockwiseandroid' => '#a1ef12',
+    'lockwiseios'     => '#fdb462',
+    'monitor'         => '#b3de69',
+    'mozillaorg'      => '#fccde5',
 ];
 foreach ($modules as $module) {
     $locale_stats[$module] = [];
 }
 $dates = array_keys($full_stats);
 foreach ($full_stats as $date => $date_data) {
+    // Ensure that new modules are available also in older dates
+    foreach ($modules as $module) {
+        if (! isset($date_data[$module])) {
+            $date_data[$module] = [];
+        }
+    }
+
     foreach ($date_data as $module_id => $data) {
         if (isset($data[$requested_locale])) {
             $locale_stats[$module_id][] = $data[$requested_locale]['completion'];
+        } else {
+            $locale_stats[$module_id][] = '';
         }
     }
 }
