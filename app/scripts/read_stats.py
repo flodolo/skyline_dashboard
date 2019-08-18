@@ -9,6 +9,7 @@ import os
 tmx_folder = '/srv/transvision/data/TMX/'
 data_folder = os.path.join(os.path.dirname(__file__), os.pardir, 'data')
 
+
 def extract_gecko_data(list_file, locales, data):
     list_file = os.path.join(data_folder, list_file)
     with open(list_file) as f:
@@ -39,8 +40,10 @@ def extract_gecko_data(list_file, locales, data):
             'completion': completion,
         }
 
+
 def get_android_ids(product_folder):
-    tmx_path = os.path.join(tmx_folder, 'en-US', 'cache_en-US_android_l10n.json')
+    tmx_path = os.path.join(
+        tmx_folder, 'en-US', 'cache_en-US_android_l10n.json')
     with open(tmx_path) as f:
         data = json.load(f)
     string_ids = []
@@ -99,17 +102,20 @@ def main():
     # Read Firefox data
     print('Extracting Transvision data')
     stats[date_key]['firefox'] = {}
-    extract_gecko_data('string_list_desktop.json',
-                 all_locales['firefox'], stats[date_key]['firefox'])
+    extract_gecko_data(
+        'string_list_desktop.json', all_locales['firefox'],
+        stats[date_key]['firefox'])
 
     # Read Fennec data
     stats[date_key]['fennec'] = {}
-    extract_gecko_data('string_list_mobile.json',
-                 all_locales['fennec'], stats[date_key]['fennec'])
+    extract_gecko_data(
+        'string_list_mobile.json', all_locales['fennec'],
+        stats[date_key]['fennec'])
 
     # Read Fenix data
     stats[date_key]['fenix'] = {}
-    extract_android_data('fenix', all_locales['fenix'], stats[date_key]['fenix'])
+    extract_android_data(
+        'fenix', all_locales['fenix'], stats[date_key]['fenix'])
 
     # Read Lockwise Android
     stats[date_key]['lockwiseandroid'] = {}
