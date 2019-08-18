@@ -43,14 +43,15 @@ if ($requested_module != 'all' && ! in_array($requested_module, $supported_modul
 $html_supported_modules = '';
 
 $module_names = [
-    'androidl10n' => 'android-l10n',
-    'fennec'      => 'Firefox for Android',
-    'firefox'     => 'Firefox',
-    'fxa'         => 'Firefox Accounts',
-    'fxios'       => 'Firefox for iOS',
-    'lockwiseios' => 'Lockwise for iOS',
-    'monitor'     => 'Firefox Monitor',
-    'mozillaorg'  => 'mozilla.org',
+    'fenix'           => 'Fenix',
+    'fennec'          => 'Firefox for Android',
+    'firefox'         => 'Firefox',
+    'fxa'             => 'Firefox Accounts',
+    'fxios'           => 'Firefox for iOS',
+    'lockwiseandroid' => 'Lockwise for Android',
+    'lockwiseios'     => 'Lockwise for iOS',
+    'monitor'         => 'Firefox Monitor',
+    'mozillaorg'      => 'mozilla.org',
 ];
 
 foreach ($supported_modules as $supported_module) {
