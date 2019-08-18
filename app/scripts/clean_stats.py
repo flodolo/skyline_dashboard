@@ -25,7 +25,6 @@ def main():
         'lockwiseandroid',
         'lockwiseios',
         'monitor',
-        'mozillaorg'
     ]
 
     for day, day_data in list(stats.items()):

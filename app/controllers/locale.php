@@ -41,7 +41,6 @@ $colors = [
     'lockwiseandroid' => '#a1ef12',
     'lockwiseios'     => '#fdb462',
     'monitor'         => '#b3de69',
-    'mozillaorg'      => '#fccde5',
 ];
 foreach ($modules as $module) {
     $locale_stats[$module] = [];

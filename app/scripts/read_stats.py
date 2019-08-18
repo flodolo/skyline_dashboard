@@ -139,9 +139,6 @@ def main():
   monitor: project(slug: "firefox-monitor-website") {
     ...allLocales
   }
-  mozillaorg: project(slug: "mozillaorg") {
-    ...allLocales
-  }
 }
 
 fragment allLocales on Project {

@@ -51,7 +51,6 @@ $module_names = [
     'lockwiseandroid' => 'Lockwise for Android',
     'lockwiseios'     => 'Lockwise for iOS',
     'monitor'         => 'Firefox Monitor',
-    'mozillaorg'      => 'mozilla.org',
 ];
 
 foreach ($supported_modules as $supported_module) {
