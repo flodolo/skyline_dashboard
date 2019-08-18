@@ -85,6 +85,12 @@ $graph_data .= "
             position: \"right\"
         },
         scales: {
+            xAxes: [{
+                type: 'time',
+                time: {
+                    unit: 'day'
+                }
+            }],
             yAxes: [{
                 scaleLabel: {
                     display: true,
