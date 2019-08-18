@@ -29,7 +29,7 @@ foreach ($latest_stats as $module_id => $data) {
 	</tr>";
 }
 
-// Prepare data for the chart.js graph
+// Completion chart.js graph for locale
 $locale_stats = [];
 $modules = array_keys($module_names);
 $colors = [
@@ -97,6 +97,12 @@ $graph_data .= "
                     labelString: '% completion'
                 }
             }]
+        },
+        title: {
+            display: true,
+            text: 'Completion Level',
+            fontSize: 24,
+            padding: 10
         }
     },
     data: {
@@ -116,8 +122,88 @@ foreach ($modules as $module) {
 
 $graph_data .= "]
     }});
+
+";
+
+// Completion chart.js graph for total/missing strings
+$total = $missing = [];
+foreach ($full_stats as $date => $date_data) {
+    $total_date = $missing_date = 0;
+    foreach ($date_data as $module_id => $data) {
+        if (isset($data[$requested_locale])) {
+            $total_date += $data[$requested_locale]['total'];
+            $missing_date += $data[$requested_locale]['missing'];
+        }
+    }
+    $total[] = $total_date;
+    $missing[] = $missing_date;
+}
+
+$graph_data .= "    let missing = [" . implode(',', $missing) ."]\n";
+$graph_data .= "    let total = [" . implode(',', $total) ."]\n";
+
+$graph_data .= "
+    let ctxStrings = document.getElementById(\"localeChartStrings\");
+    var myChart = new Chart(ctxStrings, {
+    type: 'line',
+    options: {
+        legend: {
+            position: \"right\"
+        },
+        scales: {
+            xAxes: [{
+                type: 'time',
+                time: {
+                    unit: 'day'
+                }
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Number of Strings'
+                }
+            }]
+        },
+        title: {
+            display: true,
+            text: 'Missing and Total Strings',
+            fontSize: 24,
+            padding: 10
+        }
+    },
+    data: {
+        labels: dates,
+        datasets: [";
+$graph_data .= "
+        {
+            data: missing,
+            label: \"Missing Strings\",
+            fill: false,
+            backgroundColor: \"#8dd3c7\",
+            borderColor: \"#8dd3c7\"
+        },
+        {
+            data: total,
+            label: \"Total Strings\",
+            fill: false,
+            backgroundColor: \"#fdb462\",
+            borderColor: \"#fdb462\"
+        },
+    ]
+    }});
 </script>
 ";
+
+$module_name = isset($module_names[$requested_module])
+    ? $module_names[$requested_module]
+    : 'All';
+$locale_name = $requested_locale;
+$tier_name = 'All';
+
+$page_title = 'Locale View';
+$selectors_enabled = true;
+$sub_template = 'locale.php';
+
 
 $module_name = isset($module_names[$requested_module])
     ? $module_names[$requested_module]

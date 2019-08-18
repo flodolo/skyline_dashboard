@@ -67,6 +67,7 @@ tr.danger {
     text-align: right;
 }
 
-#localeChart {
+#localeChart,
+#localeChartStrings {
     margin-top: 20px;
 }
