@@ -50,7 +50,6 @@ if (! $locale_stats = Cache::getKey($cache_id, 60 * 60)) {
     foreach ($modules as $module) {
         $locale_stats[$module] = [];
     }
-    $dates = array_keys($full_stats);
     foreach ($full_stats as $date => $date_data) {
         // Ensure that new modules are available also in older dates
         foreach ($modules as $module) {
@@ -73,7 +72,7 @@ if (! $locale_stats = Cache::getKey($cache_id, 60 * 60)) {
 $graph_data = "<script type=\"text/javascript\">\n";
 
 $labels = '    let dates = [';
-foreach ($dates as $date) {
+foreach (array_keys($full_stats) as $date) {
     $labels .= '"' . $date . '",';
 }
 $labels .= "]\n";

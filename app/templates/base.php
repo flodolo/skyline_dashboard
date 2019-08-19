@@ -54,7 +54,7 @@
   </div>
 
   <?php
-    if ($controller == 'locale') {
+    if (in_array($controller, ['locale', 'tier'])) {
         echo $graph_data;
     }
   ?>
