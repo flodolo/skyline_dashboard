@@ -1,7 +1,9 @@
 <?php
+namespace Dashboard;
+
+use Cache\Cache;
 
 // Create the table's body
-
 $html_detail_body = '';
 foreach ($latest_stats as $module_id => $data) {
     if (! isset($data[$requested_locale])) {
@@ -30,7 +32,6 @@ foreach ($latest_stats as $module_id => $data) {
 }
 
 // Completion chart.js graph for locale
-$locale_stats = [];
 $modules = array_keys($module_names);
 $colors = [
     'fenix'           => '#8dd3c7',
@@ -42,31 +43,36 @@ $colors = [
     'lockwiseios'     => '#fdb462',
     'monitor'         => '#b3de69',
 ];
-foreach ($modules as $module) {
-    $locale_stats[$module] = [];
-}
-$dates = array_keys($full_stats);
-foreach ($full_stats as $date => $date_data) {
-    // Ensure that new modules are available also in older dates
-    foreach ($modules as $module) {
-        if (! isset($date_data[$module])) {
-            $date_data[$module] = [];
-        }
-    }
 
-    foreach ($date_data as $module_id => $data) {
-        if (isset($data[$requested_locale])) {
-            $locale_stats[$module_id][] = $data[$requested_locale]['completion'];
-        } else {
-            $locale_stats[$module_id][] = '';
+$cache_id = "locale_stats_{$requested_locale}";
+if (! $locale_stats = Cache::getKey($cache_id, 60 * 60)) {
+    $locale_stats = [];
+    foreach ($modules as $module) {
+        $locale_stats[$module] = [];
+    }
+    foreach ($full_stats as $date => $date_data) {
+        // Ensure that new modules are available also in older dates
+        foreach ($modules as $module) {
+            if (! isset($date_data[$module])) {
+                $date_data[$module] = [];
+            }
+        }
+
+        foreach ($date_data as $module_id => $data) {
+            if (isset($data[$requested_locale])) {
+                $locale_stats[$module_id][] = $data[$requested_locale]['completion'];
+            } else {
+                $locale_stats[$module_id][] = '';
+            }
         }
     }
+    Cache::setKey($cache_id, $locale_stats);
 }
 
 $graph_data = "<script type=\"text/javascript\">\n";
 
 $labels = '    let dates = [';
-foreach ($dates as $date) {
+foreach (array_keys($full_stats) as $date) {
     $labels .= '"' . $date . '",';
 }
 $labels .= "]\n";
@@ -125,21 +131,30 @@ $graph_data .= "]
 ";
 
 // Completion chart.js graph for total/missing strings
-$total = $missing = [];
-foreach ($full_stats as $date => $date_data) {
-    $total_date = $missing_date = 0;
-    foreach ($date_data as $module_id => $data) {
-        if (isset($data[$requested_locale])) {
-            $total_date += $data[$requested_locale]['total'];
-            $missing_date += $data[$requested_locale]['missing'];
+$cache_id = "locale_numbers_{$requested_locale}";
+if (! $locale_numbers = Cache::getKey($cache_id, 60 * 60)) {
+    $locale_numbers = [
+        'missing' => [],
+        'total'   => [],
+    ];
+
+    foreach ($full_stats as $date => $date_data) {
+        $total_date = $missing_date = 0;
+        foreach ($date_data as $module_id => $data) {
+            if (isset($data[$requested_locale])) {
+                $total_date += $data[$requested_locale]['total'];
+                $missing_date += $data[$requested_locale]['missing'];
+            }
         }
+        $locale_numbers['total'][] = $total_date;
+        $locale_numbers['missing'][] = $missing_date;
     }
-    $total[] = $total_date;
-    $missing[] = $missing_date;
+
+    Cache::setKey($cache_id, $locale_numbers);
 }
 
-$graph_data .= "    let missing = [" . implode(',', $missing) ."]\n";
-$graph_data .= "    let total = [" . implode(',', $total) ."]\n";
+$graph_data .= "    let missing = [" . implode(',', $locale_numbers['missing']) ."]\n";
+$graph_data .= "    let total = [" . implode(',', $locale_numbers['total']) ."]\n";
 
 $graph_data .= "
     let ctxStrings = document.getElementById(\"localeChartStrings\");

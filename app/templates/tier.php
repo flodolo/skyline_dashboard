@@ -9,3 +9,5 @@
       <?php echo $html_detail_body; ?>
   </tbody>
 </table>
+
+<canvas id="localesChart" width="700" height="400"></canvas>
