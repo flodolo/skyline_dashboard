@@ -3,5 +3,5 @@ app/config/settings.inc.php
 app/data/statistics.json
 cache/*.cache
 composer.lock
+php.ini
 vendor
-web/cache
