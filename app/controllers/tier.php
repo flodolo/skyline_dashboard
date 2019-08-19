@@ -18,7 +18,7 @@ foreach ($requested_locales as $locale) {
     $table_header .= "<th class=\"locale\">{$locale}</th>\n";
 }
 
-foreach ($latest_stats as $module_id => $data) {
+foreach ($latest_stats as $module_id => $module_data) {
     $module_name = isset($module_names[$module_id])
         ? $module_names[$module_id]
         : $module_id;
@@ -26,13 +26,13 @@ foreach ($latest_stats as $module_id => $data) {
     $row_data = [];
     $total_row = 0;
     foreach ($requested_locales as $locale) {
-        if (! isset($data[$locale])) {
+        if (! isset($module_data[$locale])) {
             $row_data[] = '';
             // Consider this as complete for visualization purposes
             $total_row += 100;
         } else {
-            $row_data[] = $data[$locale]['completion'];
-            $total_row += $data[$locale]['completion'];
+            $row_data[] = $module_data[$locale]['completion'];
+            $total_row += $module_data[$locale]['completion'];
         }
     }
 
@@ -48,7 +48,7 @@ foreach ($latest_stats as $module_id => $data) {
 	<tr>
         <th>{$module_name}</th>";
     foreach ($row_data as $locale_data) {
-        if ($locale_data == '') {
+        if ($locale_data === '') {
             $html_detail_body .= "\t\t<td> </td>\n";
         } else {
             if ($locale_data == 100) {
