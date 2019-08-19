@@ -92,8 +92,10 @@ foreach (array_keys($full_stats) as $date) {
 $labels .= "]\n";
 $graph_data .= $labels;
 
+$graph_data .= "    let locales_data = {};\n";
+
 foreach ($requested_locales as $locale) {
-    $graph_data .= "    let {$locale} = [" . implode(',', $locale_averages[$locale]) ."]\n";
+    $graph_data .= "    locales_data[\"{$locale}\"] = [" . implode(',', $locale_averages[$locale]) ."]\n";
 }
 $graph_data .= "
     let ctx = document.getElementById(\"localesChart\");
@@ -139,7 +141,7 @@ $i = 0;
 foreach ($requested_locales as $locale) {
     $graph_data .= "
         {
-            data: {$locale},
+            data: locales_data[\"{$locale}\"],
             label: \"" . $locale . "\",
             fill: false,
             backgroundColor: \"" . $colors[$i] . "\",
@@ -155,7 +157,7 @@ foreach ($requested_locales as $locale) {
 
 $graph_data .= "]
     }});
-
+</script>
 ";
 
 $locale_name = 'All';
