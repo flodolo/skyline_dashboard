@@ -14,6 +14,5 @@
   </tbody>
 </table>
 
-<canvas id="localeChart" width="700" height="400"></canvas>
-
-<canvas id="localeChartStrings" width="700" height="300"></canvas>
+<canvas id="localeChart"></canvas>
+<canvas id="localeChartStrings"></canvas>

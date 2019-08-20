@@ -71,3 +71,7 @@ tr.danger {
 #localeChartStrings {
     margin-top: 20px;
 }
+
+#moduleChart {
+    margin: 20px auto;
+}

@@ -53,6 +53,16 @@ $module_names = [
     'lockwiseios'     => 'Lockwise for iOS',
     'monitor'         => 'Firefox Monitor',
 ];
+$module_colors = [
+    'fenix'           => '#8dd3c7',
+    'fennec'          => '#d4d498',
+    'firefox'         => '#bebada',
+    'fxa'             => '#fb8072',
+    'fxios'           => '#80b1d3',
+    'lockwiseandroid' => '#a1ef12',
+    'lockwiseios'     => '#fdb462',
+    'monitor'         => '#b3de69',
+];
 
 foreach ($supported_modules as $supported_module) {
     // Add to module selector

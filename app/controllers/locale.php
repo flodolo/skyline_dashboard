@@ -33,16 +33,6 @@ foreach ($latest_stats as $module_id => $data) {
 
 // Completion chart.js graph for locale
 $modules = array_keys($module_names);
-$colors = [
-    'fenix'           => '#8dd3c7',
-    'fennec'          => '#ffffb3',
-    'firefox'         => '#bebada',
-    'fxa'             => '#fb8072',
-    'fxios'           => '#80b1d3',
-    'lockwiseandroid' => '#a1ef12',
-    'lockwiseios'     => '#fdb462',
-    'monitor'         => '#b3de69',
-];
 
 $cache_id = "locale_stats_{$requested_locale}";
 if (! $locale_stats = Cache::getKey($cache_id, 60 * 60)) {
@@ -83,7 +73,7 @@ foreach ($modules as $module) {
 }
 $graph_data .= "
     let ctx = document.getElementById(\"localeChart\");
-    var myChart = new Chart(ctx, {
+    let localeChart = new Chart(ctx, {
     type: 'line',
     options: {
         legend: {
@@ -119,8 +109,8 @@ foreach ($modules as $module) {
             data: {$module},
             label: \"" . $module_names[$module] . "\",
             fill: false,
-            backgroundColor: \"" . $colors[$module] . "\",
-            borderColor: \"" . $colors[$module] . "\"
+            backgroundColor: \"" . $module_colors[$module] . "\",
+            borderColor: \"" . $module_colors[$module] . "\"
         },
     ";
 }
@@ -158,7 +148,7 @@ $graph_data .= "    let total = [" . implode(',', $locale_numbers['total']) ."]\
 
 $graph_data .= "
     let ctxStrings = document.getElementById(\"localeChartStrings\");
-    var myChart = new Chart(ctxStrings, {
+    let localeChartStrings = new Chart(ctxStrings, {
     type: 'line',
     options: {
         legend: {

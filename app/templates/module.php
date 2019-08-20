@@ -12,3 +12,5 @@
       <?php echo $html_detail_body; ?>
   </tbody>
 </table>
+
+<canvas id="moduleChart" width="600" height="600"></canvas>

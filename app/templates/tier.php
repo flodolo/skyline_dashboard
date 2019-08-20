@@ -10,4 +10,4 @@
   </tbody>
 </table>
 
-<canvas id="localesChart" width="700" height="400"></canvas>
+<canvas id="localesChart"></canvas>
