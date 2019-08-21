@@ -44,24 +44,28 @@ if ($requested_module != 'all' && ! in_array($requested_module, $supported_modul
 $html_supported_modules = '';
 
 $module_names = [
-    'fenix'           => 'Fenix',
-    'fennec'          => 'Firefox for Android',
-    'firefox'         => 'Firefox',
-    'fxa'             => 'Firefox Accounts',
-    'fxios'           => 'Firefox for iOS',
-    'lockwiseandroid' => 'Lockwise for Android',
-    'lockwiseios'     => 'Lockwise for iOS',
-    'monitor'         => 'Firefox Monitor',
+    'android-components' => 'Android Components',
+    'fenix'              => 'Fenix',
+    'fennec'             => 'Firefox for Android',
+    'firefox'            => 'Firefox',
+    'firefox-tv'         => 'Firefox for Fire TV',
+    'fxa'                => 'Firefox Accounts',
+    'fxios'              => 'Firefox for iOS',
+    'lockwise-android'   => 'Lockwise for Android',
+    'lockwiseios'        => 'Lockwise for iOS',
+    'monitor'            => 'Firefox Monitor',
 ];
 $module_colors = [
-    'fenix'           => '#8dd3c7',
-    'fennec'          => '#d4d498',
-    'firefox'         => '#bebada',
-    'fxa'             => '#fb8072',
-    'fxios'           => '#80b1d3',
-    'lockwiseandroid' => '#a1ef12',
-    'lockwiseios'     => '#fdb462',
-    'monitor'         => '#b3de69',
+    'android-components' => '#ff7f00',
+    'fenix'              => '#8dd3c7',
+    'fennec'             => '#d4d498',
+    'firefox'            => '#bebada',
+    'firefox-tv'         => '#ccebc5',
+    'fxa'                => '#fb8072',
+    'fxios'              => '#80b1d3',
+    'lockwise-android'   => '#a1ef12',
+    'lockwiseios'        => '#fdb462',
+    'monitor'            => '#b3de69',
 ];
 
 foreach ($supported_modules as $supported_module) {

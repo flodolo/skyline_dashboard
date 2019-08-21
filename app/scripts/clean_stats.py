@@ -17,12 +17,14 @@ def main():
         all_locales = json.load(f)
 
     products = [
+        'android-components',
         'fenix',
         'fennec',
         'firefox',
+        'firefox-tv',
         'fxa',
         'fxios',
-        'lockwiseandroid',
+        'lockwise-android',
         'lockwiseios',
         'monitor',
     ]
