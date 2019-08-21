@@ -32,8 +32,11 @@ def extract_gecko_data(list_file, locales, data):
             if id not in locale_data:
                 missing_strings += 1
 
-        completion = round(
-            float(total_strings - missing_strings) * 100 / total_strings, 2)
+        if total_strings == 0:
+            completion = 0
+        else:
+            completion = round(
+                float(total_strings - missing_strings) * 100 / total_strings, 2)
         data[locale] = {
             'missing': missing_strings,
             'total': total_strings,
@@ -48,10 +51,9 @@ def get_android_ids(product_folder):
         data = json.load(f)
     string_ids = []
 
-    # Add all Android components, plus specific product files
     product_folder = '/{}/'.format(product_folder)
     for id in data:
-        if '/android-components/' in id or product_folder in id:
+        if product_folder in id:
             string_ids.append(id)
     string_ids.sort()
 
@@ -72,8 +74,11 @@ def extract_android_data(product, locales, data):
             if id not in locale_data:
                 missing_strings += 1
 
-        completion = round(
-            float(total_strings - missing_strings) * 100 / total_strings, 2)
+        if total_strings == 0:
+            completion = 0
+        else:
+            completion = round(
+                float(total_strings - missing_strings) * 100 / total_strings, 2)
         data[locale] = {
             'missing': missing_strings,
             'total': total_strings,
@@ -112,16 +117,11 @@ def main():
         'string_list_mobile.json', all_locales['fennec'],
         stats[date_key]['fennec'])
 
-    # Read Fenix data
-    stats[date_key]['fenix'] = {}
-    extract_android_data(
-        'fenix', all_locales['fenix'], stats[date_key]['fenix'])
-
-    # Read Lockwise Android
-    stats[date_key]['lockwiseandroid'] = {}
-    extract_android_data(
-        'lockwiseandroid', all_locales['lockwiseandroid'],
-        stats[date_key]['lockwiseandroid'])
+    # Read android-l10n data
+    for product in ['android-components', 'fenix', 'firefox-tv', 'lockwise-android']:
+        stats[date_key][product] = {}
+        extract_android_data(
+            product, all_locales[product], stats[date_key][product])
 
     # Read data from Pontoon
     print('Extracting Pontoon data')

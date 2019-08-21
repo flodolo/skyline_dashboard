@@ -68,8 +68,9 @@ foreach (array_keys($full_stats) as $date) {
 $labels .= "]\n";
 $graph_data .= $labels;
 
+$graph_data .= "    let modules_data = {};\n";
 foreach ($modules as $module) {
-    $graph_data .= "    let {$module} = [" . implode(',', $locale_stats[$module]) ."]\n";
+    $graph_data .= "    modules_data[\"{$module}\"] = [" . implode(',', $locale_stats[$module]) ."];\n";
 }
 $graph_data .= "
     let ctx = document.getElementById(\"localeChart\");
@@ -106,7 +107,7 @@ $graph_data .= "
 foreach ($modules as $module) {
     $graph_data .= "
         {
-            data: {$module},
+            data: modules_data[\"{$module}\"],
             label: \"" . $module_names[$module] . "\",
             fill: false,
             backgroundColor: \"" . $module_colors[$module] . "\",
