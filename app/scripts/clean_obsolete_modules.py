@@ -44,7 +44,8 @@ def main():
                     del stats[day][product][locale]
 
     # Store data
-    stats_filename = os.path.join(data_folder, 'statistics2.json')
+    print('Storing updated data to file')
+    stats_filename = os.path.join(data_folder, 'statistics.json')
     with open(stats_filename, 'w') as f:
         f.write(json.dumps(stats, sort_keys=True))
 
