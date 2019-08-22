@@ -1,13 +1,31 @@
 #! /usr/bin/env python3
 
+from configparser import ConfigParser
 from urllib.parse import quote as urlquote
 from urllib.request import urlopen
 import datetime
+import glob
 import json
 import os
+import sys
 
-tmx_folder = '/srv/transvision/data/TMX/'
+# Read config file
 data_folder = os.path.join(os.path.dirname(__file__), os.pardir, 'data')
+config_file = os.path.join(data_folder, os.pardir, 'config', 'config.ini')
+if not os.path.isfile(config_file):
+    print('Configuration file /app/config/config.ini is missing')
+    sys.exit(1)
+else:
+    config_parser = ConfigParser()
+    config_parser.read(config_file)
+    try:
+        tmx_folder = os.path.join(config_parser.get('config', 'tmx_path'), '')
+    except Exception as e:
+        print('tmx_path not found in config.ini')
+        sys.exit(1)
+    if not os.path.exists(tmx_folder):
+        print('Path to TMX is not valid')
+        sys.exit(1)
 
 
 def extract_gecko_data(list_file, locales, data):
@@ -172,8 +190,19 @@ fragment allLocales on Project {
         print(e)
 
     # Store data
+    print('Storing data in JSON files')
     with open(stats_filename, 'w') as f:
         f.write(json.dumps(stats, sort_keys=True))
+
+    # Remove existing cache files
+    print('Removing cache files')
+    cache_folder = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, 'cache')
+    file_list = glob.glob(os.path.join(cache_folder, '*.cache'))
+    for file_name in file_list:
+        try:
+            os.remove(os.path.abspath(file_name))
+        except:
+            print('Error removing file: {}'.format(file_name))
 
 
 if __name__ == '__main__':

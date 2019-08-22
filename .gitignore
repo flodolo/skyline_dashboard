@@ -1,5 +1,5 @@
 .php_cs.cache
-app/config/settings.inc.php
+app/config/config.ini
 app/data/statistics.json
 cache/*.cache
 composer.lock
