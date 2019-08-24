@@ -38,6 +38,16 @@ def extract_gecko_data(list_file, locales, data):
         for id in ids:
             string_ids.append('{}:{}'.format(filename, id))
 
+    # Load reference data and check if obsolete strings are defined
+    ref_tmx_path = os.path.join(tmx_folder, 'en-US',
+                                'cache_en-US_gecko_strings.json')
+    with open(ref_tmx_path) as f:
+        reference_data = json.load(f)
+    for id in string_ids[:]:
+        if id not in reference_data:
+            print('{} not available in reference locale'.format(id))
+            string_ids.remove(id)
+
     total_strings = len(string_ids)
     for locale in locales:
         tmx_path = os.path.join(tmx_folder, locale,
