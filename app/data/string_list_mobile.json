@@ -1,15 +1,19 @@
 {
     "mobile/android/base/android_strings.dtd": [
-        "updatednewfirstrun_sync_title",
-        "updatednewfirstrun_sync_subtext",
-        "updatednewfirstrun_signin_button",
-        "crash_notification_title",
+        "activity_stream_signin_button",
+        "activity_stream_signin_description",
+        "activity_stream_signin_title",
+        "bookmark_default_folder_title",
+        "bookmark_edit_undo",
+        "crash_handler_notifications_channel",
         "crash_notification_message",
         "crash_notification_negative_button_text",
-        "bookmark_default_folder_title",
-        "pref_cookies_not_accept_trackers",
-        "bookmark_edit_undo",
+        "crash_notification_title",
         "filepicker_permission_denied",
-        "crash_handler_notifications_channel"
+        "firstrun_signin_button2",
+        "pref_cookies_not_accept_trackers",
+        "updatednewfirstrun_signin_button",
+        "updatednewfirstrun_sync_subtext",
+        "updatednewfirstrun_sync_title"
     ]
 }
