@@ -97,7 +97,22 @@
         "cfr-protections-panel-link-text",
         "cfr-whatsnew-button.label",
         "cfr-whatsnew-button.tooltiptext",
-        "cfr-whatsnew-panel-header"
+        "cfr-whatsnew-panel-header",
+        "cfr-whatsnew-release-notes-link-text",
+        "cfr-whatsnew-fx70-title",
+        "cfr-whatsnew-fx70-body",
+        "cfr-whatsnew-tracking-protect-title",
+        "cfr-whatsnew-tracking-protect-body",
+        "cfr-whatsnew-tracking-protect-link-text",
+        "cfr-whatsnew-tracking-blocked-title",
+        "cfr-whatsnew-tracking-blocked-subtitle",
+        "cfr-whatsnew-tracking-blocked-link-text",
+        "cfr-whatsnew-lockwise-backup-title",
+        "cfr-whatsnew-lockwise-backup-body",
+        "cfr-whatsnew-lockwise-backup-link-text",
+        "cfr-whatsnew-lockwise-take-title",
+        "cfr-whatsnew-lockwise-take-body",
+        "cfr-whatsnew-lockwise-take-link-text"
     ],
     "browser/browser/newtab/onboarding.ftl": [
         "onboarding-cards-dismiss.title",
