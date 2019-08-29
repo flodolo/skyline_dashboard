@@ -71,7 +71,9 @@
         "menu-menuitem-import",
         "menu-menuitem-iphone-app",
         "menu-menuitem-preferences",
-        "menu.title"
+        "menu.title",
+        "about-logins-login-list-empty-search-title",
+        "about-logins-login-list-empty-search-description"
     ],
     "browser/browser/newtab/asrouter.ftl": [
         "cfr-doorhanger-feature-heading",
