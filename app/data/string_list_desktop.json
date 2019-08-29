@@ -73,7 +73,9 @@
         "menu-menuitem-preferences",
         "menu.title",
         "about-logins-login-list-empty-search-title",
-        "about-logins-login-list-empty-search-description"
+        "about-logins-login-list-empty-search-description",
+        "about-logins-menu-menuitem-help",
+        "about-logins-intro-instruction-help"
     ],
     "browser/browser/newtab/asrouter.ftl": [
         "cfr-doorhanger-feature-heading",
