@@ -315,7 +315,8 @@
         "contentBlocking.breakageReportView.title",
         "contentBlocking.breakageReportView3.description",
         "contentBlocking.breakageReportView2.learnMore",
-        "contentBlocking.breakageReportView2.collection.comments.label"
+        "contentBlocking.breakageReportView2.collection.comments.label",
+        "protections.showreport.label"
     ],
     "browser/chrome/browser/browser.properties": [
         "identity.headerMainWithHost",
