@@ -197,7 +197,8 @@
         "content-blocking-tracking-content-label.accesskey",
         "permissions-autoplay",
         "permissions-autoplay-settings.label",
-        "permissions-autoplay-settings.accesskey"
+        "permissions-autoplay-settings.accesskey",
+        "content-blocking-section-top-level-description"
     ],
     "browser/browser/protections.ftl": [
         "auto-scan",
@@ -255,7 +256,15 @@
         "tracker-tab-content",
         "tracker-tab-title",
         "turn-on-sync",
-        "turn-on-sync.title"
+        "turn-on-sync.title",
+        "graph-total-tracker-summary",
+        "tracker-tab-description",
+        "lockwise-sync-not-syncing-devices",
+        "monitor-header-content-no-account",
+        "monitor-header-content-signed-in",
+        "info-monitored-emails",
+        "info-known-breaches-found",
+        "info-exposed-passwords-found"
     ],
     "browser/chrome/browser/accounts.properties": [
         "account.manageAccount",
