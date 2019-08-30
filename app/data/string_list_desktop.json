@@ -75,7 +75,8 @@
         "about-logins-login-list-empty-search-title",
         "about-logins-login-list-empty-search-description",
         "about-logins-menu-menuitem-help",
-        "about-logins-intro-instruction-help"
+        "about-logins-intro-instruction-help",
+        "about-logins-login-item-username.placeholder"
     ],
     "browser/browser/newtab/asrouter.ftl": [
         "cfr-doorhanger-feature-heading",
@@ -316,7 +317,9 @@
         "contentBlocking.breakageReportView3.description",
         "contentBlocking.breakageReportView2.learnMore",
         "contentBlocking.breakageReportView2.collection.comments.label",
-        "protections.showreport.label"
+        "protections.showreport.label",
+        "urlbar.permissionsGranted.tooltip",
+        "identity.permissions3"
     ],
     "browser/chrome/browser/browser.properties": [
         "identity.headerMainWithHost",
