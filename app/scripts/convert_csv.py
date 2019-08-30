@@ -30,7 +30,7 @@ def main():
                 line_count +=1
                 continue
 
-            project = row[3]
+            project = row[3].replace('\n', '')
             if project not in json_data:
                 json_data[project] = {}
             if row[0] != '':
