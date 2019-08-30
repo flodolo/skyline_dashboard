@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 
 import argparse
+import glob
 import json
 import os
 import sys
@@ -34,6 +35,17 @@ def main():
     stats_filename = os.path.join(data_folder, 'statistics.json')
     with open(stats_filename, 'w') as f:
         f.write(json.dumps(stats, sort_keys=True))
+
+    # Remove existing cache files
+    print('Removing cache files')
+    cache_folder = os.path.join(os.path.dirname(
+        __file__), os.pardir, os.pardir, 'cache')
+    file_list = glob.glob(os.path.join(cache_folder, '*.cache'))
+    for file_name in file_list:
+        try:
+            os.remove(os.path.abspath(file_name))
+        except:
+            print('Error removing file: {}'.format(file_name))
 
 
 if __name__ == '__main__':
