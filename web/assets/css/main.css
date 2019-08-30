@@ -75,3 +75,7 @@ tr.danger {
 #moduleChart {
     margin: 20px auto;
 }
+
+.schedulechart {
+    margin: 50px auto 30px;
+}

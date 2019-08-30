@@ -11,7 +11,7 @@ $schedule_data = json_decode($json_file, true);
 $initiatives = array_keys($schedule_data);
 
 $date_from = strtotime('2019-07-05');
-$date_to = strtotime('now');
+$date_to = strtotime('2019-10-01');
 
 $dates_js = 'let dates = [';
 $dates = [];
@@ -37,6 +37,7 @@ foreach ($schedule_data as $project_name => $project_data) {
     $graph_data .= '
     graphCanvas = document.createElement("canvas");
     graphCanvas.id = "' . $project_id . '";
+    graphCanvas.className = "schedulechart";
     container.appendChild(graphCanvas);
     ctx = document.getElementById("' . $project_id . '");
     chart = new Chart(ctx, {
@@ -46,6 +47,12 @@ foreach ($schedule_data as $project_name => $project_data) {
                 position: "right"
             },
             scales: {
+                xAxes: [{
+                    type: "time",
+                    time: {
+                        unit: "day"
+                    }
+                }],
                 yAxes: [{
                     scaleLabel: {
                         display: true,
