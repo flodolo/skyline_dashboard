@@ -15,7 +15,7 @@
   <script src="assets/js/chart.bundle.min.js"></script>
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="mainbody">
     <?php
           if ($selectors_enabled):
     ?>
@@ -47,7 +47,11 @@
           endif;
     ?>
 
-    <?php include "{$root_folder}/app/templates/{$sub_template}"; ?>
+    <?php
+    if (isset($sub_template)) {
+      include "{$root_folder}/app/templates/{$sub_template}";
+    }
+    ?>
     <p class="text-right"><small>Last update: <?php echo $last_day; ?> UTC</small></p>
   </div>
   <?php echo $graph_data; ?>
