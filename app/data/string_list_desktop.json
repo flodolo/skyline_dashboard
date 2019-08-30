@@ -76,7 +76,9 @@
         "about-logins-login-list-empty-search-description",
         "about-logins-menu-menuitem-help",
         "about-logins-intro-instruction-help",
-        "about-logins-login-item-username.placeholder"
+        "about-logins-login-item-username.placeholder",
+        "about-logins-error-message-duplicate-login",
+        "about-logins-error-message-default"
     ],
     "browser/browser/newtab/asrouter.ftl": [
         "cfr-doorhanger-feature-heading",
