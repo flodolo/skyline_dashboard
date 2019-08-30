@@ -64,7 +64,7 @@ foreach ($schedule_data as $project_name => $project_data) {
         labels: dates,
         datasets: [{
             label: "Estimated",
-            backgroundColor: "blue",
+            backgroundColor: "#8dd3c7",
             data: [';
 
     foreach ($dates as $day) {
@@ -76,7 +76,7 @@ foreach ($schedule_data as $project_name => $project_data) {
     $graph_data .= ']
         }, {
             label: "Actual",
-            backgroundColor: "red",
+            backgroundColor: "#fb8072",
             data: [';
 
     foreach ($dates as $day) {

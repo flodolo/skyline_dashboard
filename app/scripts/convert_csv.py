@@ -25,6 +25,10 @@ def main():
     with open(csv_filename) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
+        json_data['All Initiatives'] = {
+            'actual': {},
+            'estimated': {},
+        }
         for row in csv_reader:
             if line_count == 0:
                 line_count +=1
@@ -48,9 +52,20 @@ def main():
             if wc == '':
                 continue
 
+            # Update initiative data
             if row_type not in json_data[project]:
                 json_data[project][row_type] = {}
-            json_data[project][row_type][date] = wc
+            if date in json_data[project][row_type]:
+                json_data[project][row_type][date] += int(wc)
+            else:
+                json_data[project][row_type][date] = int(wc)
+
+            # Update overall data
+            if date in json_data['All Initiatives'][row_type]:
+                json_data['All Initiatives'][row_type][date] += int(wc)
+            else:
+                json_data['All Initiatives'][row_type][date] = int(wc)
+
 
     # Remove empty projects
     empty_projects = []
