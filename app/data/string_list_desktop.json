@@ -330,7 +330,11 @@
         "contentBlocking.breakageReportView2.collection.comments.label",
         "protections.showreport.label",
         "urlbar.permissionsGranted.tooltip",
-        "identity.permissions3"
+        "identity.permissions3",
+        "protections.trackingContent2.description",
+        "identity.connectionSecure3",
+        "identity.connectionNotSecure2",
+        "identity.evOwnerLabel2"
     ],
     "browser/chrome/browser/browser.properties": [
         "identity.headerMainWithHost",
@@ -371,7 +375,8 @@
         "protections.footer.blockedTrackerCounter.description",
         "protections.footer.blockedTrackerCounter.tooltip",
         "confirmationHint.passwordSaved.label",
-        "identity.headerSecurityWithHost"
+        "identity.headerSecurityWithHost",
+        "identity.ev.contentOwner"
     ],
     "browser/chrome/browser/sitePermissions.properties": [
         "state.multichoice.autoplayblock",
