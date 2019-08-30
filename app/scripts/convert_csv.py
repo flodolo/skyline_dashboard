@@ -52,6 +52,14 @@ def main():
                 json_data[project][row_type] = {}
             json_data[project][row_type][date] = wc
 
+    # Remove empty projects
+    empty_projects = []
+    for project_name, project_data in json_data.items():
+        if project_data == {}:
+            empty_projects.append(project_name)
+    for name in empty_projects:
+        del json_data[name]
+
 
     with open(json_filename, 'w') as json_file:
         json_file.write(json.dumps(json_data, indent=2, sort_keys=True))
