@@ -266,7 +266,8 @@
         "monitor-header-content-signed-in",
         "info-monitored-emails",
         "info-known-breaches-found",
-        "info-exposed-passwords-found"
+        "info-exposed-passwords-found",
+        "about-logins-view-logins-button"
     ],
     "browser/chrome/browser/accounts.properties": [
         "account.manageAccount",
