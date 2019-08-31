@@ -197,7 +197,10 @@
         "permissions-autoplay",
         "permissions-autoplay-settings.label",
         "permissions-autoplay-settings.accesskey",
-        "content-blocking-section-top-level-description"
+        "content-blocking-section-top-level-description",
+        "forms-breach-alerts.label",
+        "forms-breach-alerts.accesskey",
+        "forms-breach-alerts-learn-more-link"
     ],
     "browser/browser/protections.ftl": [
         "auto-scan",
