@@ -51,8 +51,13 @@
     if (isset($sub_template)) {
       include "{$root_folder}/app/templates/{$sub_template}";
     }
+
+    if ($selectors_enabled) {
     ?>
-    <p class="text-right"><small>Last update: <?php echo $last_day; ?> UTC</small></p>
+    <p id="lastupdate"><small><a href="schedule.php">Schedule</a> - Last update: <?php echo $last_day; ?> UTC</small></p>
+    <?php
+    }
+    ?>
   </div>
   <?php echo $graph_data; ?>
 </body>

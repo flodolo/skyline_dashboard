@@ -79,3 +79,8 @@ tr.danger {
 .schedulechart {
     margin: 50px auto 30px;
 }
+
+#lastupdate {
+    text-align: right;
+    margin-top: 30px;
+}
