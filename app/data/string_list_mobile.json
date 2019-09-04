@@ -2,7 +2,10 @@
     "mobile/android/base/android_strings.dtd": [
         "activity_stream_signin_button",
         "activity_stream_signin_description",
+        "activity_stream_signin_prompt_button",
+        "activity_stream_signin_prompt",
         "activity_stream_signin_title",
+        "activity_stream_signup_button",
         "bookmark_default_folder_title",
         "bookmark_edit_undo",
         "crash_handler_notifications_channel",
@@ -11,6 +14,7 @@
         "crash_notification_title",
         "filepicker_permission_denied",
         "firstrun_signin_button2",
+        "firstrun_signup_button",
         "pref_cookies_not_accept_trackers",
         "updatednewfirstrun_signin_button",
         "updatednewfirstrun_sync_subtext",
